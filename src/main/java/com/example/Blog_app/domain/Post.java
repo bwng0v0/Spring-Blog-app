@@ -5,7 +5,12 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
+
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 @Getter//lombok 게터 자동생성
 @NoArgsConstructor(access = AccessLevel.PROTECTED)//lombok protected 기본생성자
@@ -20,6 +25,14 @@ public class Post {
 
     @Column(name = "content", nullable = false)
     private String content;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
 
     @Builder//빌더 패턴으로 객체 생성
     public Post(String title, String content){

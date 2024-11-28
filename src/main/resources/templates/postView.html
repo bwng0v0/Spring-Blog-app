@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="p-5 ">
+      <h1 th:text="${post.getTitle()}"></h1>
+      <p th:text="'작성일:'+${post.getCreatedAt()}"></p>
+    </div>
+    <div>
+      <p th:text="${post.getContent()}"></p>
+    </div>
+  </div>
+
+</body>
+</html>

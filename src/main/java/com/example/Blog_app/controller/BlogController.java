@@ -23,7 +23,6 @@ public class BlogController {
     }
 
     @GetMapping("/")
-    @ResponseBody
     public String root(){
         return "root!";
     }
