@@ -38,6 +38,7 @@ public class Post {
     public Post(String title, String content){
         this.title = title;
         this.content = content;
+        createdAt = LocalDateTime.now();
     }
 
     public void update(String title, String content){

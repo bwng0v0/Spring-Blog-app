@@ -7,7 +7,6 @@ import com.example.Blog_app.dto.UpdatePostRequest;
 import com.example.Blog_app.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class BlogController {
 
     private final BlogService blogService;
 
-    public BlogController(BlogService blogService) {
+    public BlogController(BlogService blogService){
         this.blogService = blogService;
     }
 
