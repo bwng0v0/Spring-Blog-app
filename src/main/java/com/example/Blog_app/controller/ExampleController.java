@@ -11,6 +11,7 @@ import java.util.List;
 
 @Controller
 public class ExampleController {
+
     @GetMapping("/example")
     public String example(Model model){
         Person person = new Person();

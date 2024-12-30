@@ -21,11 +21,6 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @GetMapping("/")
-    public String root(){
-        return "root!";
-    }
-
     @PostMapping("/api/posts")
     public ResponseEntity<Post> addPost(@RequestBody AddPostRequest request){
         Post savedPost = blogService.save(request);
