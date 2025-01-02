@@ -11,23 +11,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController  //모든 응답 = ResponseBody
-public class BlogController {
+public class BlogApiController {
 
     private final BlogService blogService;
 
-    public BlogController(BlogService blogService){
+    public BlogApiController(BlogService blogService){
         this.blogService = blogService;
     }
+    //--------- 필드 및 생성자 -----------
 
+
+    //글 생성
     @PostMapping("/api/posts")
     public ResponseEntity<Post> addPost(@RequestBody AddPostRequest request){
+        //@RequestBody로 객체를 받으면 스프링이 자동으로 변환해줌 잭슨 같은거하고 연결해서
         Post savedPost = blogService.save(request);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(savedPost);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedPost);
     }
 
+    //모든 글 조회
     @GetMapping("/api/posts")
     public ResponseEntity<List<PostResponse>> findAllPosts(){
         List<PostResponse> posts = blogService.findAll()
@@ -39,6 +42,7 @@ public class BlogController {
                 .body(posts);
     }
 
+    //특정 글 조회
     @GetMapping("/api/posts/{id}")
     public ResponseEntity<PostResponse> findPost(@PathVariable long id){
         Post post = blogService.findById(id);
@@ -47,6 +51,7 @@ public class BlogController {
                 .body(new PostResponse(post));
     }
 
+    //특정 글 삭제
     @DeleteMapping("/api/posts/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable long id){
         blogService.delete(id);
@@ -55,6 +60,7 @@ public class BlogController {
                 .build();
     }
 
+    //특정 글 수정
     @PutMapping("/api/posts/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable long id,
                                            @RequestBody UpdatePostRequest request){

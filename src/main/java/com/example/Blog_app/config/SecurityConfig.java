@@ -32,7 +32,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login") // 사용자 정의 로그인 페이지
+                        .loginPage("/hello") // 사용자 정의 로그인 페이지
                         .defaultSuccessUrl("/", true) // 로그인 성공 후 이동 경로
                         .permitAll()
                 )

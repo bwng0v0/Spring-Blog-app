@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -26,6 +27,7 @@ public class Post {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -38,7 +40,6 @@ public class Post {
     public Post(String title, String content){
         this.title = title;
         this.content = content;
-        createdAt = LocalDateTime.now();
     }
 
     public void update(String title, String content){
