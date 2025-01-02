@@ -2,12 +2,17 @@ package com.example.Blog_app.controller;
 
 import com.example.Blog_app.domain.User;
 import com.example.Blog_app.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
@@ -23,7 +28,7 @@ public class UserController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/login")
     public String login(){
         return "login";
     }

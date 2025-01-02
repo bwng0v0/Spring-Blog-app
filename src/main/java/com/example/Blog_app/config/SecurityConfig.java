@@ -28,11 +28,11 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/signup", "/css/**", "/js/**").permitAll() // 정적 리소스 허용
+                        .requestMatchers("/login", "/signup", "/css/**", "/js/**", "/h2-console/**").permitAll() // 정적 리소스 허용
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/hello") // 사용자 정의 로그인 페이지
+                        .loginPage("/login") // 사용자 정의 로그인 페이지
                         .defaultSuccessUrl("/", true) // 로그인 성공 후 이동 경로
                         .permitAll()
                 )
