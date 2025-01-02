@@ -48,4 +48,12 @@ public class UserController {
         return "redirect:/login"; // 회원가입 성공 시 로그인 페이지로 리다이렉트
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response){
+        //GET이라서 CSRF취약
+        new SecurityContextLogoutHandler().logout(request, response,
+                SecurityContextHolder.getContext().getAuthentication());
+        return "redirect:/login";
+    }
+
 }
